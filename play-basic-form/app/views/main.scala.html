@@ -1,0 +1,26 @@
+@*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ *@
+@(title: String)(content: Html)
+
+@import layouts.govuk_template
+
+@head = {
+  <link rel="stylesheet" media="screen" href="@controllers.routes.AssetsController.at("stylesheets/main.css")">
+  <link rel="shortcut icon" type="image/png" href="@controllers.routes.AssetsController.at("images/favicon.png")">
+
+  <link rel="stylesheet" media="screen" href="@controllers.routes.AssetsController.at("stylesheets/application.min.css")">
+}
+@bodyEnd = {
+  <script src="@controllers.routes.AssetsController.at("javascripts/main.js")" type="text/javascript"></script>
+  <script src="@controllers.routes.AssetsController.at("javascripts/application.min.js")" type="text/javascript"></script>
+}
+@insideHeader = {}
+@afterHeader = {}
+@footerTop = {}
+@footerLinks = {}
+
+@govuk_template(Some(title), bodyClasses = None)(head, bodyEnd, insideHeader, afterHeader, footerTop, Some(footerLinks))(content)

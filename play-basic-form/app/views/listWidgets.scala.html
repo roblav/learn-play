@@ -1,0 +1,30 @@
+@(form: Form[Widget])(implicit request: RequestHeader, m: Messages)
+
+@main("Welcome to Play") {
+
+<main id="wrapper" role="main">
+  <div class="centered-content">
+    Area for the beta banner and HMRC branding
+  </div>
+  <div id="content">
+    <article class="content__body">
+      <h1>Create basic form</h1>
+
+      <p>
+        Display a form here
+      </p>
+
+      @helper.form(action = routes.Application.createWidget()) {
+        @helper.CSRF.formField
+        @helper.inputText(form("name"))
+        @helper.inputText(form("price"))
+        <button type="submit">Create widget</button>
+      }
+    </article>
+  </div>
+</main>
+
+
+
+
+}
